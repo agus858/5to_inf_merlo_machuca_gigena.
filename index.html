@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pioneros de la Mecánica de Fluidos</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f5f5;
+            color: #2c3e50;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a6f, #c44569);
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveGrid 20s linear infinite;
+        }
+
+        @keyframes moveGrid {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(50px, 50px);
+            }
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        header p {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        .audio-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #ff6b6b, #c44569);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(255, 107, 107, 0.5);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .audio-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 40px rgba(255, 107, 107, 0.7);
+        }
+
+        .audio-btn.playing {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 8px 30px rgba(255, 107, 107, 0.5);
+            }
+
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 12px 40px rgba(255, 107, 107, 0.8);
+            }
+        }
+
+        nav {
+            background: white;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff6b6b, #c44569);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        nav a:hover::after {
+            width: 80%;
+        }
+
+        nav a:hover {
+            color: #ff6b6b;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        section {
+            background: white;
+            margin: 2rem 0;
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        section:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            font-weight: 800;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(90deg, #ff6b6b, #c44569);
+            border-radius: 3px;
+        }
+
+        h3 {
+            color: #ff6b6b;
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+            font-weight: 700;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #ff6b6b, #c44569);
+        }
+
+        .timeline-item {
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .timeline-content {
+            background: linear-gradient(135deg, #fff5f5, #ffffff);
+            padding: 2rem;
+            border-radius: 20px;
+            width: 45%;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.15);
+            border: 2px solid #ffe0e0;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.03);
+            box-shadow: 0 12px 35px rgba(255, 107, 107, 0.25);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-date {
+            font-weight: 800;
+            color: #ff6b6b;
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 26px;
+            height: 26px;
+            background: linear-gradient(135deg, #ff6b6b, #c44569);
+            border: 5px solid white;
+            border-radius: 50%;
+            top: 0;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.5);
+        }
+
+        .card {
+            background: linear-gradient(135deg, #fff5f5, #ffffff);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 20px;
+            border-left: 6px solid #ff6b6b;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-left-color: #c44569;
+            transform: translateX(10px);
+            box-shadow: 0 8px 30px rgba(255, 107, 107, 0.2);
+        }
+
+        .formula {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 15px;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            font-size: 1.8rem;
+            color: #ff6b6b;
+            box-shadow: 0 10px 30px rgba(44, 62, 80, 0.3);
+            font-weight: 700;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #fff5f5, #ffe0e0);
+            border: 2px solid #ffb3b3;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
+            border-left: 6px solid #ff6b6b;
+        }
+
+        .highlight strong {
+            color: #c44569;
+            font-size: 1.15rem;
+        }
+
+        .explanation {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 12px;
+            border-left: 4px solid #ff6b6b;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        ul {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        li {
+            margin: 1rem 0;
+            color: #555;
+        }
+
+        strong {
+            color: #2c3e50;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            text-align: center;
+            padding: 3rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .audio-btn {
+                width: 60px;
+                height: 60px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="audio-btn" id="audioBtn" title="Escuchar narración">🔊</button>
+
+    <header>
+        <h1>ipm 146 centenario</h1>
+        <p>Torricelli, Pascal y Bernoulli</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#timeline">Cronología</a></li>
+            <li><a href="#torricelli">Torricelli</a></li>
+            <li><a href="#pascal">Pascal</a></li>
+            <li><a href="#bernoulli">Bernoulli</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="timeline">
+            <h2> Línea de Tiempo</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">1643</div>
+                        <h3>Barómetro de Torricelli</h3>
+                        <p>Primera evidencia de la presión atmosférica y creación del vacío artificial.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">1648</div>
+                        <h3>Experimento de Pascal</h3>
+                        <p>Demuestra que la presión disminuye con la altitud.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">1653</div>
+                        <h3>Principio de Pascal</h3>
+                        <p>La presión se transmite uniformemente en fluidos.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">1738</div>
+                        <h3>Principio de Bernoulli</h3>
+                        <p>Relación entre velocidad y presión en fluidos en movimiento.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="torricelli">
+            <h2> Evangelista Torricelli</h2>
+
+            <div class="card">
+                <h3>El Barómetro (1643)</h3>
+                <p>Torricelli llenó un tubo de vidrio de 1 metro con mercurio, lo tapó con el dedo, lo invirtió y lo
+                    sumergió en un recipiente con mercurio. Al quitar el dedo, el mercurio bajó hasta 76 cm.</p>
+
+                <div class="explanation">
+                    <strong>¿Por qué no se cae todo el mercurio?</strong> Porque el peso del aire atmosférico empuja el
+                    mercurio en el recipiente hacia arriba, sosteniendo la columna. El espacio vacío arriba del mercurio
+                    fue el primer vacío creado por el ser humano.
+                </div>
+
+                <div class="highlight">
+                    <strong>Impacto:</strong> Demostró que el aire tiene peso y que existe el vacío. Antes se creía que
+                    "la naturaleza aborrece el vacío" y que era imposible crearlo.
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Teorema de Torricelli</h3>
+                <p>Si haces un agujero en un tanque de agua, la velocidad de salida del agua depende de la altura del
+                    agua sobre el agujero.</p>
+
+                <div class="formula">
+                    v = √(2gh)
+                </div>
+
+                <div class="explanation">
+                    <strong>Explicación simple:</strong> Cuanto más alto esté el agua sobre el agujero, más rápido sale.
+                    Es como si el agua "cayera" por ese agujero con la misma velocidad que alcanzaría cayendo libremente
+                    desde esa altura. Por eso los chorros de una fuente llegan más lejos cuando hay más agua en el
+                    tanque.
+                </div>
+
+                <p><strong>Uso práctico:</strong> Calcular cuánta agua fluye por tuberías, diseñar sistemas de riego,
+                    represas y fuentes.</p>
+            </div>
+        </section>
+
+        <section id="pascal">
+            <h2> Blaise Pascal</h2>
+
+            <div class="card">
+                <h3>Principio de Pascal (1653)</h3>
+                <p>Cuando presionas un fluido encerrado (líquido o gas en un recipiente cerrado), esa presión se
+                    transmite igual a todos los puntos del fluido.</p>
+
+                <div class="formula">
+                    F₁/A₁ = F₂/A₂
+                </div>
+
+                <div class="explanation">
+                    <strong>Ejemplo cotidiano:</strong> Imagina un globo lleno de agua. Si lo aprietas por un lado, todo
+                    el globo se pone duro, no solo donde lo aprietas. La presión se distribuye por todo el agua. Esto es
+                    el principio de Pascal: la presión se transmite por igual en todas direcciones.
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>¿Cómo funciona la prensa hidráulica?</h3>
+                <p>Si aplicas una pequeña fuerza en un pistón pequeño, puedes levantar objetos muy pesados con un pistón
+                    grande. La clave es que la presión es la misma en ambos pistones.</p>
+
+                <div class="explanation">
+                    <strong>La magia de los fluidos:</strong> Si el pistón grande tiene 10 veces más área que el
+                    pequeño, la fuerza se multiplica por 10. Con 10 kg de fuerza puedes levantar 100 kg. Es como una
+                    palanca, pero usando líquidos.
+                </div>
+
+                <div class="highlight">
+                    <strong>Aplicaciones:</strong>
+                    <ul>
+                        <li><strong>Frenos de auto:</strong> Tu pie presiona el pedal con poca fuerza, pero se
+                            multiplica para frenar las ruedas</li>
+                        <li><strong>Gatos hidráulicos:</strong> Levantan autos con bombeo manual</li>
+                        <li><strong>Excavadoras:</strong> Los brazos se mueven con cilindros hidráulicos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Experimento del Puy de Dôme (1648)</h3>
+                <p>Pascal midió la presión atmosférica al nivel del mar y en la cima de una montaña. Descubrió que en la
+                    montaña hay menos presión.</p>
+
+                <div class="explanation">
+                    <strong>¿Por qué ocurre esto?</strong> Porque el aire tiene peso. Cuanto más alto subes, menos aire
+                    hay sobre ti, entonces menos presión. Es como bucear: mientras más profundo vas, más agua hay sobre
+                    ti y más presión sientes. En el aire es al revés: más alto = menos presión.
+                </div>
+            </div>
+        </section>
+
+        <section id="bernoulli">
+            <h2> Daniel Bernoulli</h2>
+
+            <div class="card">
+                <h3>Principio de Bernoulli (1738)</h3>
+                <p>Descubrimiento revolucionario: cuando un fluido se mueve más rápido, su presión disminuye.</p>
+
+                <div class="formula">
+                    P + ½ρv² + ρgh = constante
+                </div>
+
+                <div class="explanation">
+                    <strong>¿Qué significa?</strong> Cuando el aire o el agua aceleran, "pierden" presión. Es un
+                    intercambio de energía: más velocidad = menos presión, y viceversa. La suma total de energía siempre
+                    se mantiene igual.
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>¿Cómo vuelan los aviones?</h3>
+                <p>Las alas tienen una forma especial: curvas arriba, planas abajo. Cuando el avión se mueve, el aire
+                    sobre el ala recorre más distancia y va más rápido que el aire debajo.</p>
+
+                <div class="explanation">
+                    <strong>El secreto del vuelo:</strong>
+                    <ul>
+                        <li>Aire arriba del ala = más rápido = <strong>menos presión</strong></li>
+                        <li>Aire abajo del ala = más lento = <strong>más presión</strong></li>
+                        <li>Resultado: el ala es empujada hacia arriba (sustentación)</li>
+                    </ul>
+                    Sin el Principio de Bernoulli, no existirían los aviones modernos.
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Otras aplicaciones fascinantes</h3>
+
+                <p><strong> Autos de carrera:</strong> Los alerones generan fuerza hacia abajo usando flujo de aire
+                    rápido arriba y lento abajo, aumentando el agarre.</p>
+
+                <p><strong>Efecto curvo en deportes:</strong> Cuando una pelota gira, un lado se mueve más rápido con
+                    el aire (menos presión) y el otro más lento (más presión). Esto curva la trayectoria.</p>
+
+                <p><strong> Cortina de ducha:</strong> El agua caliente acelera el aire, reduce su presión, y la
+                    cortina es empujada hacia adentro por la presión exterior.</p>
+
+                <div class="explanation">
+                    <strong>Atomizadores y perfumes:</strong> Al presionar, el aire sale rápido por un tubo estrecho
+                    (baja presión). Esta baja presión succiona el líquido de un depósito y lo dispersa en gotitas finas.
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Teoría Cinética de Gases</h3>
+                <p>Bernoulli propuso que los gases son millones de partículas rebotando constantemente. La presión es el
+                    resultado de estos choques contra las paredes.</p>
+
+                <div class="explanation">
+                    <strong>Visión revolucionaria:</strong> Explicó que la temperatura es movimiento: mientras más
+                    caliente está un gas, más rápido se mueven sus partículas. Esta idea anticipó la física moderna en
+                    más de 100 años.
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2> La Evolución del Conocimiento</h2>
+
+            <div class="card">
+                <h3>De lo estático a lo dinámico</h3>
+                <p><strong>Torricelli:</strong> "El aire pesa y presiona" → Fluidos en reposo</p>
+                <p><strong>Pascal:</strong> "La presión se transmite uniformemente" → Fluidos confinados</p>
+                <p><strong>Bernoulli:</strong> "Velocidad y presión están conectadas" → Fluidos en movimiento</p>
+
+                <div class="highlight">
+                    Cada uno construyó sobre el trabajo del anterior, creando la base completa de la <strong>mecánica de
+                        fluidos</strong> que permite la aviación, hidráulica, meteorología y miles de tecnologías
+                    modernas.
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <h3> Legado Científico</h3>
+        <p>Tres mentes brillantes que descifraron los secretos de los fluidos</p>
+        <p>Sus descubrimientos transformaron el mundo para siempre</p>
+    </footer>
+
+    <script>
+        //tatatatattattaattatatata
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Animación de aparición
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(section);
+        });
+
+        // Sistema de narración
+        const audioBtn = document.getElementById('audioBtn');
+        const texts = {
+            intro: "Bienvenido al mundo de la mecánica de fluidos. Descubriremos los trabajos de tres científicos que revolucionaron la física.",
+            torricelli: "Evangelista Torricelli inventó el barómetro en 1643. Llenó un tubo con mercurio y lo invirtió en un recipiente. El mercurio no se cayó completamente porque el aire atmosférico lo sostenía. Esto demostró que el aire tiene peso y presión. También descubrió que la velocidad de salida de un líquido depende de su altura, fundamental para diseñar sistemas hidráulicos.",
+            pascal: "Blaise Pascal descubrió que la presión en un fluido encerrado se transmite uniformemente en todas direcciones. Esto permite que los frenos hidráulicos funcionen: una pequeña presión en el pedal se multiplica para frenar las ruedas. Pascal también demostró que la presión atmosférica disminuye con la altitud, midiendo la presión al nivel del mar y en una montaña.",
+            bernoulli: "Daniel Bernoulli revolucionó la física con un descubrimiento simple pero poderoso: cuando un fluido se mueve más rápido, su presión disminuye. Esto explica cómo vuelan los aviones: el aire fluye más rápido sobre el ala curvada, creando menos presión arriba que abajo, generando sustentación. También explica las curvas en deportes, los atomizadores y hasta por qué la cortina de ducha se pega a ti.",
+            conclusion: "Estos tres científicos construyeron juntos la base de la mecánica de fluidos moderna. Sus descubrimientos permiten que existan aviones, sistemas hidráulicos, predicción del clima y miles de tecnologías que usamos cada día."
+        };
+
+        let currentIndex = 0;
+        let speaking = false;
+        let utterance = null;
+        const sections = ['intro', 'torricelli', 'pascal', 'bernoulli', 'conclusion'];
+
+        audioBtn.addEventListener('click', () => {
+            if (speaking) {
+                window.speechSynthesis.cancel();
+                audioBtn.classList.remove('playing');
+                audioBtn.textContent = '🔊';
+                speaking = false;
+                currentIndex = 0;
+            } else {
+                speakNext();
+            }
+        });
+
+        function speakNext() {
+            if (currentIndex >= sections.length) {
+                audioBtn.classList.remove('playing');
+                audioBtn.textContent = '🔊';
+                speaking = false;
+                currentIndex = 0;
+                return;
+            }
+
+            speaking = true;
+            audioBtn.classList.add('playing');
+            audioBtn.textContent = '⏸';
+
+            utterance = new SpeechSynthesisUtterance(texts[sections[currentIndex]]);
+            utterance.lang = 'es-ES';
+            utterance.rate = 0.9;
+            utterance.pitch = 1;
+
+            utterance.onend = () => {
+                currentIndex++;
+                setTimeout(speakNext, 1000);
+            };
+
+            utterance.onerror = () => {
+                audioBtn.classList.remove('playing');
+                audioBtn.textContent = '🔊';
+                speaking = false;
+                currentIndex = 0;
+            };
+
+            window.speechSynthesis.speak(utterance);
+        }
+    </script>
+</body>
+
+</html>
